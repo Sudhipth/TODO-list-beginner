@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO-LIST</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li button {
+            background-color: #dc3545;
+        }
+
+        li button:hover {
+            background-color: #a71d2a;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="input-text" type="text" placeholder="Enter a new task">
+    <button onclick="add()">Add</button>
+    <ul id="ul-id">
+        
+    </ul>
+</body>
+
+<script>
+    var ul = document.getElementById("ul-id")
+    function add() {
+        var input = document.getElementById("input-text");
+        if (input.value.trim() !== "") {
+            var li = document.createElement("li");
+            li.innerHTML = input.value + " <button onclick='del(event)'>Delete</button>";
+            ul.append(li);
+            input.value = ""; 
+        } else {
+            alert("Please enter a task!");
+        }
+    }
+    function del(event) {
+        event.target.parentElement.remove();
+    }
+</script>
+
+</html>
